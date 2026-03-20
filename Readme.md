@@ -28,6 +28,24 @@ This work this tries to solve this problem for a Multi-Agent formulation by intr
 ---
 
 ## Implementation Video
+
+**Problem Statement**
+
+We consider a multi-agent system operating in an initially unknown, discrete environment represented as a grid map. The environment contains randomly distributed static obstacles and an unknown number of victims. A team of homogeneous agents is deployed from one or more corner cells of the map. The agents have no prior knowledge of the environment layout, obstacle locations, or the number and positions of victims.
+
+Each agent is capable of local sensing, limited communication, and movement to adjacent cells. The primary objective of the system is to locate and rescue all victims in the environment through coordinated exploration and collaboration.
+
+Since the environment is unknown, agents must initially perform an exploration task to discover free space, obstacles, and victims. Victims are detectable only when agents are within a local sensing range. Upon detection, each victim reveals a requirement parameter ( k ), indicating the minimum number of agents required to complete the rescue operation.
+
+If the number of agents currently near a detected victim is less than ( k ), the nearby agents must initiate a communication protocol to recruit additional agents. This is achieved through a distributed message-passing framework that propagates requests to other agents in the system. Agents receiving such requests must decide whether to continue exploration or navigate toward the requesting victim, based on system-level coordination policies.
+
+Once at least ( k ) agents have gathered in the vicinity of a victim, they must form a simple spatial configuration in which each participating agent occupies a distinct cell adjacent to the victim. Upon successful formation, the victim is considered rescued and is marked as safe. The agents involved in the rescue are then released and resume exploration or assist in other rescue tasks.
+
+The system must support concurrent operations, where multiple groups of agents may independently detect and rescue different victims. Agents that are not currently engaged in a rescue task must continue exploring the environment to discover additional victims or respond to recruitment messages.
+
+The goal is to design distributed algorithms for exploration, communication, task allocation, and coordination that ensure all victims are eventually located and rescued efficiently, despite uncertainty in the environment and limited local information.
+
+
 ![Implementation Video](https://github.com/Jash-2000/RescueNet-Uncertainty-Aware-Hierarchical-Multi-Agent-RL/blob/main/Figures/sar_animation_v2_fixed.gif)
 
 ---
